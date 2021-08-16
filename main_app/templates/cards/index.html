@@ -4,11 +4,13 @@
 
 {% for card in cards %}
 <div class="card">
-  <div class="card-content">
-    <span class="card-title">{{card.name}}</span>
-    <p>Rarity: {{ card.rarity }}</p>
-    <p>Status: {{card.status}}</p>
-    <p>Condition: {{ card.condition }}</p>
-  </div>
+  <a href="{% url 'detail' card.id %}">
+    <div class="card-content">
+      <span class="card-title">{{card.name}}</span>
+      <p>Rarity: {{ card.rarity }}</p>
+      <p>Status: {{card.status}}</p>
+      <p>Condition: {{ card.condition }}</p>
+    </div>
+  </a>
 </div>
 {% endfor %} {% endblock %}
