@@ -9,6 +9,10 @@
     <p>Status: {{ card.status }}</p>
     <p>Condition: {{ card.condition }}</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'cards_update' card.id %}">Edit</a>
+    <a href="{% url 'cards_delete' card.id %}">DELETE</a>
+  </div>
 </div>
 
 {% endblock %}

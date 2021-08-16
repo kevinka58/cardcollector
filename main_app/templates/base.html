@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Pokemon Card Collector</title>
+    <title>Poké Binder</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -22,14 +22,13 @@
         <div class="nav-wrapper">
           <ul>
             <li>
-              <a href="/" class="left brand-logo"
-                >&nbsp;&nbsp;PokemonCardCollector</a
-              >
+              <a href="/" class="left brand-logo">&nbsp;&nbsp;Poké Binder</a>
             </li>
           </ul>
           <ul class="right">
-            <li><a href="/about">About</a></li>
-            <l1><a href="/cards">View All Cards</a></l1>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'cards_create' %}">Add Card</a></li>
+            <l1><a href="{% url 'index' %}">View All Cards</a></l1>
           </ul>
         </div>
       </nav>
@@ -37,7 +36,7 @@
     <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer">
       <div class="right">
-        All Rights Reserved, &copy; 2021 Pokemon Card Collector &nbsp;
+        All Rights Reserved, &copy; 2021 Poké Binder &nbsp;
       </div>
     </footer>
   </body>
