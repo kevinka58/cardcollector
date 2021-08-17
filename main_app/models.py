@@ -13,6 +13,31 @@ CONDITIONS = (
     ('9', 'PSA-9'),
     ('10', 'PSA-10'),
 )
+
+RARITIES = (
+    ('1', 'Common'),
+    ('2', 'Uncommon'),
+    ('3', 'Rare'),
+    ('4', 'Holo Rare'),
+    ('5', 'Reverse Holo'),
+    ('6', 'Secret Rare'),
+    ('7', 'Rainbow Rare'),
+    ('8', 'Promotional'),
+    ('9', 'Does Not Apply'),
+)
+
+STATUS = (
+    ('1', 'EX'),
+    ('2', 'GX'),
+    ('3', 'Tag Team'),
+    ('4', 'VMAX'),
+    ('5', 'Full Art'),
+    ('6', 'Full Body'),
+    ('7', 'Half Art'),
+    ('8', 'Half Body '),
+    ('9', 'V'),
+    ('10', 'Does Not Apply'),
+)
 # Create your models here.
 class Card(models.Model):
     name = models.CharField(max_length=100)
@@ -27,8 +52,8 @@ class Card(models.Model):
 class CardSet(models.Model):
     card_set_name = models.CharField(max_length=200, default="None")
     name = models.CharField(max_length=200)
-    rarity = models.CharField(max_length=100, default="Common")
-    status = models.CharField(max_length=100, default="Ex: Full-Art, Half-Art, etc...")
+    rarity = models.CharField(max_length=100, choices=RARITIES, default="Common")
+    status = models.CharField(max_length=100, choices=STATUS, default="Ex: Full-Art, Half-Art, etc...")
     condition = models.CharField(max_length=2, choices=CONDITIONS, default=[0][0])
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
     
