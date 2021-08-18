@@ -8,8 +8,10 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 def home(request):
-    return HttpResponse('<h1>Home Page</h1>')
+    return render(request, "home.html")
 
 def about(request):
     return render(request, "about.html")
@@ -38,7 +40,7 @@ def add_cardset(request, card_id):
         new_card_set.card_id = card_id
         new_card_set.save()
     return redirect('detail', card_id=card_id)
-    
+
 @login_required
 def delete_cardset(request, card_id, cardset_id):
     card = Card.objects.get(id=card_id)
@@ -48,7 +50,7 @@ def delete_cardset(request, card_id, cardset_id):
 
 class CardCreate(CreateView):
     model = Card
-    fields = '__all__'
+    fields = ['name']
 
     # This inherited method is called when a valid vat form is being submitted
     def form_valid(self, form):
@@ -85,7 +87,14 @@ class TypeDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def assoc_type(request, card_id, type_id):
     Card.objects.get(id=card_id).types.add(type_id)
-    return redirect('details', card_id=card_id)
+    return redirect('detail', card_id=card_id)
+
+@login_required
+def unassoc_type(request, card_id, type_id):
+    type = Type.objects.get(id=type_id)
+    card = Card.objects.get(id=card_id)
+    type.card_set.remove(card)
+    return redirect('detail', card_id=card_id)
 
 def signup(request):
     error_message = ''
@@ -101,6 +110,6 @@ def signup(request):
         else:
             error_message = 'Invalid sign up - try again'
         # A bad POST or a GET request, so render signup.html with an empty form
-        form = UserCreationForm()
-        context = {'form': form, 'error_message': error_message}
-        return render (request, 'registration/signup.html', context)
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render (request, 'registration/signup.html', context)

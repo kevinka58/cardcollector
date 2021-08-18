@@ -66,7 +66,7 @@ class CardSet(models.Model):
     rarity = models.CharField(max_length=100, choices=RARITIES, default="Common")
     status = models.CharField(max_length=100, choices=STATUS, default="Ex: Full-Art, Half-Art, etc...")
     condition = models.CharField(max_length=2, choices=CONDITIONS, default=[0][0])
-    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return f"{self.get_condition_display()} in {self.name}"

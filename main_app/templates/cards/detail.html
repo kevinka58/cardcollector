@@ -56,8 +56,14 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">
-          A <span style="color: {{ type.color }}">{{ type.name }}</span> Type
+          A <span style="color: {{ type.color }} ">{{ type.name }}</span> Type
         </span>
+        <br />
+        <a
+          href="{% url 'unassoc_type' card.id type.id %}"
+          class="btn btn rounded btn-danger"
+          >REMOVE</a
+        >
       </div>
     </div>
     {% endfor %} {% else %}
