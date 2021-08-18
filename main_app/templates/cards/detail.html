@@ -37,6 +37,11 @@
           <td>{{cardset.rarity}}</td>
           <td>{{cardset.status}}</td>
           <td>{{cardset.get_condition_display}}</td>
+          <td>
+            <a href="{% url 'delete_cardset' cardset.card_id cardset.id%}"
+              >DELETE</a
+            >
+          </td>
         </tr>
         {% endfor %}
       </tbody>
