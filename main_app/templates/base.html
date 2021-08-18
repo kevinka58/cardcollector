@@ -23,12 +23,16 @@
         <div class="nav-wrapper">
           <ul>
             <li>
-              <a href="/" class="left brand-logo">&nbsp;&nbsp;Poké Binder</a>
+              <a href="{% url 'home' %}" class="left brand-logo"
+                >&nbsp;&nbsp;Poké Binder</a
+              >
             </li>
           </ul>
           <ul class="right">
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'cards_create' %}">Add Pokémon</a></li>
+            <l1><a href="{% url 'types_create' %}">Add A Typing</a></l1>
+            <l1><a href="{% url 'types_index' %}">View All Typings</a></l1>
             <l1><a href="{% url 'index' %}">View All Cards</a></l1>
           </ul>
         </div>
